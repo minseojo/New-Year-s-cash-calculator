@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>세뱃돈 계산기</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="display" disabled>
+        <div class="buttons">
+            <button id="operator_btn" onclick="appendToDisplay('+')">+</button>
+            <button id="operator_btn" onclick="appendToDisplay('-')">-</button>
+            <button id="operator_btn" onclick="appendToDisplay('*')">×</button>
+            <button id="operator_btn" onclick="appendToDisplay('/')">/</button>
+            <button id="number_btn" onclick="appendToDisplay('7')">7</button>
+            <button id="number_btn" onclick="appendToDisplay('8')">8</button>
+            <button id="number_btn" onclick="appendToDisplay('9')">9</button>
+            <button id="delete_btn" onclick="clearDisplay()">AC</button>
+            <button id="number_btn" onclick="appendToDisplay('4')">4</button>
+            <button id="number_btn" onclick="appendToDisplay('5')">5</button>
+            <button id="number_btn" onclick="appendToDisplay('6')">6</button>
+            <button id="operator_btn" onclick="calculateResult()">=</button>
+            <button id="number_btn" onclick="appendToDisplay('1')">1</button>
+            <button id="number_btn" onclick="appendToDisplay('2')">2</button>
+            <button id="number_btn" onclick="appendToDisplay('3')">3</button>
+            <button id="number_btn" onclick="appendToDisplay('0')">0</button>
+            <button id="decimal_point_btn" onclick="appendToDisplay('.')">.</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
