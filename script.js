@@ -160,6 +160,9 @@ function calculateResult() {
         // 결과 값이 10자리 넘어가는 경우 'Infinity'
         if (resultStack[0] < MIN_INFINITY || resultStack[0] > MAX_INFINITY ) {
             document.getElementById('display').value = 'Infinity';
+            alert("음수는 허용하지 않습니다. 계산기를 초기화 하겠습니다.");
+            clearDisplay(); // C 
+            clearDisplay(); // 두번하면 AC
         }
         // 정상 계산인 경우
         else {
@@ -168,6 +171,7 @@ function calculateResult() {
             // 3자리 마다 ',' 컴마 찍어서 디스플레이에 보여 주기
             document.getElementById('display').value = resultStack[0].toLocaleString('ko-KR');
             currentInput = resultStack[0].toString();
+            currentInput = 0;
             state = [false, false, false];
             out = [];
         }
