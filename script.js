@@ -158,7 +158,7 @@ function calculateResult() {
     if (resultStack.length === 1) {
         console.log("[resultStack[0]] 계산 결과 = " + resultStack[0]);
         // 결과 값이 10자리 넘어가는 경우 'Infinity'
-        if (resultStack[0] > MAX_INFINITY) {
+        if (resultStack[0] < MIN_INFINITY || resultStack[0] > MAX_INFINITY ) {
             document.getElementById('display').value = 'Infinity';
         }
         // 정상 계산인 경우
