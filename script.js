@@ -82,6 +82,7 @@ function appendToDisplay(value) {
 // 'C', 'AC' 버튼
 function clearDisplay() {
     // (C) 이전 값만 지우기
+    out.pop();
     currentInput = defaultValue; // 입력 값 기본 값(0)으로 초기화
     document.getElementById('display').value = defaultValue;
     if (document.getElementById('delete_btn').innerText === 'C') {
@@ -118,7 +119,7 @@ function calculateResult() {
         out.push(currentInput);
     }
     console.log("[out] 최종 수식: " + out);
-    
+
     // 입력 값을 후위표기식으로 변환
     let postfix = convertPostfix();
     console.log("[postfix] 최종 수식 후위표기식으로 변환: " + postfix);
