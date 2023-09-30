@@ -82,10 +82,11 @@ function appendToDisplay(value) {
 // 'C', 'AC' 버튼
 function clearDisplay() {
     // (C) 이전 값만 지우기
-    out.pop();
     currentInput = defaultValue; // 입력 값 기본 값(0)으로 초기화
     document.getElementById('display').value = defaultValue;
     if (document.getElementById('delete_btn').innerText === 'C') {
+        out.pop();
+        console.log("out: " + out);
         document.getElementById('delete_btn').innerText = 'AC';
     }
 
@@ -98,13 +99,6 @@ function clearDisplay() {
 
 // '=' 버튼 
 function calculateResult() {
-    // 이미 연산이 끝난 상황에서 '=' 버튼을 계속 누르는 경우 무시
-    if (state[EQUAL_SIGN]) return;
-    state[EQUAL_SIGN] = true;
-
-    // 수식이 없는 경우 (무시) ex - '='버튼만 누르는 상황
-    if (out.length == 0) return;
-
     // (제약 사항: 더하기, 곱하기, 나누기 다음 숫자를 입력하지 않고 ‘=’ 를 입력할 경우 alert을 띄워줍니다.)
     // 잘못된 수식 Ex) 1 + 2 + = 
     if (currentInput === '+' || currentInput === '-' ||
@@ -112,6 +106,13 @@ function calculateResult() {
         alert('더하기, 빼기, 곱하기, 나누기 다음 숫자를 입력하세요.');
         return;
     }
+
+    // 이미 연산이 끝난 상황에서 '=' 버튼을 계속 누르는 경우 무시
+    if (state[EQUAL_SIGN]) return;
+    state[EQUAL_SIGN] = true;
+
+    // 수식이 없는 경우 (무시) ex - '='버튼만 누르는 상황
+    if (out.length == 0) return;
 
     // '=' 버튼을 누르면 이전 입력값을 추가해줌.
     // ex) 1 + 2 * 3 = , 3을 out에 추가, out = [1,+,2,*,3]
