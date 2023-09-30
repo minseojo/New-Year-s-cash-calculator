@@ -21,6 +21,7 @@ function getOperatorPriority(op) {
 
 // 숫자, 연산자, 소수점 버튼
 function appendToDisplay(value) {
+    document.getElementById('expression').value = out.join(' ');
     state[EQUAL_SIGN] = false;
     console.log("input = " + value)
     // 소수점
@@ -71,6 +72,11 @@ function appendToDisplay(value) {
         currentInput = value;
     }
     console.log("[out] 현재 수식: " + out);
+    if (MIN_INFINITY <= parseFloat(currentInput) && parseFloat(currentInput) <= MAX_INFINITY) {
+        document.getElementById('expression').value = out.join(' ') + ' ' + currentInput;
+    } else {
+        document.getElementById('expression').value = out.join(' ');
+    }
     // 디스플레이에 보여주기
     document.getElementById('display').value = currentInput;
     // 현재 디스플레이에 입력값이 있는 경우 delete_btn = [C]
@@ -84,6 +90,7 @@ function clearDisplay() {
     // (C) 이전 값만 지우기
     currentInput = defaultValue; // 입력 값 기본 값(0)으로 초기화
     document.getElementById('display').value = defaultValue;
+    document.getElementById('expression').value = out.join(' ') + ' ' + currentInput;
     if (document.getElementById('delete_btn').innerText === 'C') {
         if ('0' <= out[out.length-1] && out[out.length-1] <= '9999999999')
         out.pop();
@@ -93,6 +100,7 @@ function clearDisplay() {
 
     // C 기능 + (AC) 전체 초기화
     else if (document.getElementById('delete_btn').innerText === 'AC') {
+        document.getElementById('expression').value = defaultValue;
         state = [false, false, false];
         out = [];
     }
@@ -120,6 +128,7 @@ function calculateResult() {
     if (MIN_INFINITY <= currentInput && currentInput <= MAX_INFINITY) {
         out.push(currentInput);
     }
+    document.getElementById('expression').value = out.join(' ');
     console.log("[out] 최종 수식: " + out);
 
     // 입력 값을 후위표기식으로 변환
@@ -147,6 +156,8 @@ function calculateResult() {
                     // 나눗셈 오류
                     if (operand2 === 0) {
                         document.getElementById('display').value = '숫자 아님';
+                        out.pop();
+                        document.getElementById('expression').value = out.join(' ');
                         return;
                     }
                     resultStack.push(operand1 / operand2);
@@ -171,7 +182,6 @@ function calculateResult() {
             // 3자리 마다 ',' 컴마 찍어서 디스플레이에 보여 주기
             document.getElementById('display').value = resultStack[0].toLocaleString('ko-KR');
             currentInput = resultStack[0].toString();
-
             state = [false, false, false];
             out = [];
         }
