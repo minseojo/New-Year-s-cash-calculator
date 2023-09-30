@@ -85,6 +85,7 @@ function clearDisplay() {
     currentInput = defaultValue; // 입력 값 기본 값(0)으로 초기화
     document.getElementById('display').value = defaultValue;
     if (document.getElementById('delete_btn').innerText === 'C') {
+        if ('0' <= out[out.length-1] && out[out.length-1] <= '9999999999')
         out.pop();
         console.log("out: " + out);
         document.getElementById('delete_btn').innerText = 'AC';
