@@ -160,7 +160,7 @@ function calculateResult() {
         // 결과 값이 10자리 넘어가는 경우 'Infinity'
         if (resultStack[0] < MIN_INFINITY || resultStack[0] > MAX_INFINITY ) {
             document.getElementById('display').value = 'Infinity';
-            alert("음수는 허용하지 않습니다. 계산기를 초기화 하겠습니다.");
+            alert("연산 결과는" + MIN_INFINITY + "~" + MAX_INFINITY + " 까지 허용합니다. 계산기를 초기화 합니다.");
             clearDisplay(); // C 
             clearDisplay(); // 두번하면 AC
         }
