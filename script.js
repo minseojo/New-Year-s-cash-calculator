@@ -171,7 +171,7 @@ function calculateResult() {
             // 3자리 마다 ',' 컴마 찍어서 디스플레이에 보여 주기
             document.getElementById('display').value = resultStack[0].toLocaleString('ko-KR');
             currentInput = resultStack[0].toString();
-            currentInput = 0;
+
             state = [false, false, false];
             out = [];
         }
