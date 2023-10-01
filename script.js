@@ -113,7 +113,7 @@ function calculateResult() {
     if (state[EQUAL_SIGN]) return;
     state[EQUAL_SIGN] = true;
 
-    // 수식이 없는 경우 (무시) ex - '='버튼만 누르는 상황
+    // 수식이 없는 경우 무시 - ex) 수식 없이 '='버튼만 누르는 상황
     if (out.length == 0) return;
 
     // '=' 버튼을 누르면 이전 입력값을 추가해줌.
