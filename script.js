@@ -1,6 +1,6 @@
 const MIN_INFINITY = 0; // 연산 결과 최소 값 상수
 const MAX_INFINITY = 9999999999; // 연산 결과 최대 값 상수 (10자리)
-const OP = 0; // state 연산자 상수
+const OPERATOR = 0; // state 연산자 상수 
 const DECIMAL_POINT = 1; // state 소수점 상수
 const EQUAL_SIGN = 2; // state 등호 상수
 let state = [false, false, false]; // 연산자, 소수점, 등호(=) 상태
@@ -38,10 +38,10 @@ function appendToDisplay(value) {
         // 이전 입력이 문자였으면, 'op1 + (op2, 입력 대기)' 인 currentInput = op1인 상태에서 
         // currentInput을 0으로 초기화 하고, op2를 입력 받을 준비. 
         // + 디스플레이에 새로운 값 보여줌
-        if (state[OP] === true) {
+        if (state[OPERATOR] === true) {
             currentInput = defaultValue;
             document.getElementById('display').value = value;
-            state[OP] = false;
+            state[OPERATOR] = false;
         }
         // 기본 값 0 무시하기 - ex) '12' 입력하면 '012'가 아닌 '12'로 보여짐
         if (currentInput === defaultValue) currentInput = value;
@@ -53,7 +53,7 @@ function appendToDisplay(value) {
         // 수식이 없는 경우
         if (currentInput.length == 0) return;
         // 연산자를 바꾸는 경우
-        if (state[OP]) {
+        if (state[OPERATOR]) {
             // 이전 연산자 제거
             out.pop();
         }
@@ -62,7 +62,7 @@ function appendToDisplay(value) {
             // 새로운 숫자를 받으므로 소수점 여부 기본값으로 초기화
             state[DECIMAL_POINT] = false;
             // 연산자 선택 
-            state[OP] = true;
+            state[OPERATOR] = true;
             // 이전 숫자 추가
             out.push(currentInput);
         }
