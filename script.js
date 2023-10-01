@@ -12,13 +12,6 @@ const defaultValue = '0'; // 초기 기본 값
 let currentInput = defaultValue; // 입력 값 (초기 기본값으로 초기화)
 let out = []; // 입력 수식 ex) 1 + 3 * 4 = (= 생략), 매 순간 더해짐
 
-function getOperatorPriority(op) {
-    // 리턴 값이 작을 수록 우선순위가 높음
-    if (op === '×' || op === '÷') return 1;
-    else if (op === '+' || op === '-') return 2;
-    return 1000; // 연산자가 아닌 경우
-}
-
 // 숫자, 연산자, 소수점 버튼
 function appendToDisplay(value) {
     document.getElementById('expression').value = out.join(' ');
@@ -209,4 +202,11 @@ function convertPostfix() {
 		result.push(stack.pop());
 	}
     return result;
+}
+
+function getOperatorPriority(op) {
+    // 리턴 값이 작을 수록 우선순위가 높음
+    if (op === '×' || op === '÷') return 1;
+    else if (op === '+' || op === '-') return 2;
+    return 1000; // 연산자가 아닌 경우
 }
