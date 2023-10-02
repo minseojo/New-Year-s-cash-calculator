@@ -210,3 +210,13 @@ function getOperatorPriority(op) {
     else if (op === '+' || op === '-') return 2;
     return 1000; // 연산자가 아닌 경우
 }
+
+// 버튼 클릭시 이미지 보여주기
+function showImage() {
+    var imageContainer = document.getElementById("imageContainer");
+    imageContainer.style.display = "block"; // 이미지를 표시합니다.
+  
+    setTimeout(function() {
+      imageContainer.style.display = "none"; // 3초 후에 이미지를 다시 숨깁니다.
+    }, 3000);
+  }

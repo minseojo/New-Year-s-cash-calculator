@@ -109,3 +109,16 @@ button:nth-child(12) {
 #decimal_point_btn:active {
     background-color: white;
 }
+
+/* 버튼 클릭시 해킹 이미지 출력 */
+#imageContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* 이미지 아래에 어두운 배경 추가 (선택사항) */
+    display: none;
+    justify-content: center;
+    align-items: center;
+  }
